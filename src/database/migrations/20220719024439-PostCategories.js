@@ -5,12 +5,12 @@ module.exports = {
     queryInterface.createTable('PostCategories',{
       postId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey:true,
-        autoIncrement:true,
+        references: {
+          model: 'BlogPosts',
+          key: 'id',
+        },
       },
       categoryId:{
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
@@ -20,7 +20,7 @@ module.exports = {
     })
   },
 
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users')
+  down: async (queryInterface, _Sequelize) => {
+    await queryInterface.dropTable('PostCategories')
   }
 };

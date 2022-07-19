@@ -3,7 +3,7 @@
 module.exports = {
   // Migration para criar a tabela users
   up: async (queryInterface, Sequelize) => {
-   queryInterface.createTable('users',
+   queryInterface.createTable('Users',
    {
     id: {
     type: Sequelize.INTEGER,
@@ -11,14 +11,14 @@ module.exports = {
     primaryKey:true,
     autoIncrement:true,
    },
-    displayName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      field:'display_name',
-    },
+   displayName: {
+    allowNull: false,
+    type: Sequelize.STRING
+  },
     email: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: Sequelize.STRING,
@@ -33,6 +33,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users')
+    await queryInterface.dropTable('Users')
   }
 };
