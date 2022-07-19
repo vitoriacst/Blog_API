@@ -14,6 +14,7 @@ module.exports = {
     displayName: {
       type: Sequelize.STRING,
       allowNull: false,
+      field:'display_name',
     },
     email: {
       type: Sequelize.STRING,
@@ -32,11 +33,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.dropTable('users')
   }
 };
