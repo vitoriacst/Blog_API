@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  // essa tabela possui uma chave estrangeira que faz a referencia ao id
   up: async (queryInterface, Sequelize) => {
     queryInterface.createTable('BlogPosts',{
       id: {
@@ -17,19 +18,27 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        }
+      },
       published : {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated : {
+        type: Sequelize.DATE,
+        allowNull: false,
       }
 
     })
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.dropTable('BlogPosts')
   }
 };
