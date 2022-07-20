@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize/types");
+'use strict';
 
 const createModelUser = (sequelize,DataTypes) => {
- const user = sequelize.define('user',{
+ const user = sequelize.define('User',{
   id: DataTypes.INTEGER,
    displayName: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -10,6 +10,9 @@ const createModelUser = (sequelize,DataTypes) => {
  },{
   tableName: 'Users'
  })
+ user.associate = (model) => {
+   user.hasMany(model.BlogPost, { foreignKey: 'userId', as: 'blogPosts' });
+ }
  return user
 }
 
