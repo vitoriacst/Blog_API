@@ -1,5 +1,5 @@
 const express = require('express');
-const authController = require('./controller/Login.controller');
+const LoginController = require('./controller/Login.controller');
 const Errors = require('./middlewares/Errors');
 require('express-async-errors');
 // ...
@@ -7,7 +7,7 @@ require('express-async-errors');
 const app = express();
 
 app.use(express.json());
-app.post('/login', authController.Login);
+app.post('/login', LoginController.userInformations);
 app.use(Errors);
 // ...
 

@@ -9,11 +9,11 @@ const userEmail = async (email) => {
       // vai transformar em json (Raw)
     });
     if (!response) {
-      return { error: { code: 'INVALID_DATA', message: 'Invalid Fields' } };
+      return { error: { code: 'INVALID_DATA', message: 'Invalid fields' } };
     }
     return response;
   } catch (error) {
-    return { error: { code: 'INVALID_DATA', message: 'Invalid Fields' } };
+    return { error: { code: 'INVALID_DATA', message: 'Invalid fields' } };
   }
 };
 module.exports = { userEmail };
