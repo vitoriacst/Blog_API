@@ -1,5 +1,5 @@
 const express = require('express');
-const authController = require('./controller/auth.controller');
+const authController = require('./controller/Login.controller');
 const Errors = require('./middlewares/Errors');
 require('express-async-errors');
 // ...
