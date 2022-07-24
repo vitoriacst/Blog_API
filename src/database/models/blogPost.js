@@ -1,27 +1,37 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const BlogPost = sequelize.define('BlogPost', {
-    id: {
+  const BlogPost = sequelize.define(
+    'BlogPost',
+    {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       title: DataTypes.STRING,
       content: DataTypes.STRING,
-      userId: DataTypes.INTEGER,
-      published: DataTypes.DATE,
-      updated: DataTypes.DATE,
+      userId: {
+        foreignKey: true,
+        type: DataTypes.INTEGER,
+      },
+      published: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updated: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
     },
     {
-    timestamps: false,
-    tableName: 'BlogPosts'
-    })
-
-    BlogPost.associate = (model) => {
-        BlogPost.belongsTo(model.User, { foreignKey: 'userId', as: 'user' });
-      }
+      timestamps: false,
+    }
+  );
+  BlogPost.associate = (model) => {
+    BlogPost.belongsTo(model.User, { foreignKey: 'userId', as: 'user' });
+  };
 
   return BlogPost;
 };
