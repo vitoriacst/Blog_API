@@ -2,10 +2,10 @@ const { category } = require('../database/models/index');
 
 const CategoryName = async (name) => {
   try {
-    const response = await category.create(name, {
+    const result = await category.create(name, {
       raw: true,
     });
-    return response;
+    return result;
   } catch (error) {
     return {
       error: {

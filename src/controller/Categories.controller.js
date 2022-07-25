@@ -8,7 +8,7 @@ const CategoryName = rescue(async (req, res, next) => {
     name: Joi.string().required().min(3),
   }).validate(req.body);
   if (error) return next(error);
-  // fazendo a validacao por meio do join do name
+  // validacao usando joi
   const response = await categoryService.CategoryName(req.body);
   if (response.error) return next(response.error);
   return res.status(201).json(response);
