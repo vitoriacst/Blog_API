@@ -13,4 +13,16 @@ const CreateUser = async (objetoUsuario) => {
     };
   }
 };
-module.exports = { CreateUser };
+
+const ListUsersInfos = async () => {
+  try {
+    const response = await User.findAll({
+      attributes: { exclude: ['password'] },
+      raw: true,
+    });
+    return response;
+  } catch (error) {
+    return undefined;
+  }
+};
+module.exports = { CreateUser, ListUsersInfos };

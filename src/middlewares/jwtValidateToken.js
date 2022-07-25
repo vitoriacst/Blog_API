@@ -6,7 +6,7 @@ const TakeTokenSecret = process.env.JWT_SECRET;
 // criacao do token
 module.exports = (req, res, next) => {
   const AuthToken = req.headers.authorization;
-  if (!AuthToken) return res.status(401).json({ message: 'Token Not Found' });
+  if (!AuthToken) return res.status(401).json({ message: 'Token not found' });
   try {
     const decoder = jwt.verify(AuthToken, TakeTokenSecret);
     req.user = decoder.data;

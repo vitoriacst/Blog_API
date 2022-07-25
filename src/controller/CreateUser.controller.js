@@ -26,4 +26,11 @@ const CreateUser = rescue(async (req, res, next) => {
   return res.status(201).json({ token });
 });
 
-module.exports = { CreateUser };
+const ListUsersInfos = rescue(async (_req, res, next) => {
+  const response = await UserService.ListUsersInfos();
+  if (!response) {
+    return next(response.error);
+  }
+  return res.status(200).json(response);
+});
+module.exports = { CreateUser, ListUsersInfos };
