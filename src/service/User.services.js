@@ -25,4 +25,22 @@ const ListUsersInfos = async () => {
     return undefined;
   }
 };
-module.exports = { CreateUser, ListUsersInfos };
+const ListUsersInfosById = async (id) => {
+  try {
+    const response = await User.findByPk(id, {
+      attributes: { exclude: ['password'] },
+      raw: true,
+    });
+    if (!response) {
+      return {
+        error: { code: 'NOT_FOUND', message: 'User does not exist' },
+      };
+    }
+    return response;
+  } catch (error) {
+    return {
+      error: { code: 'NOT_FOUND', message: 'User does not exist' },
+    };
+  }
+};
+module.exports = { CreateUser, ListUsersInfos, ListUsersInfosById };

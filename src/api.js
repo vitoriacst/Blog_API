@@ -13,6 +13,7 @@ app.post('/login', LoginController.userInformations);
 app.post('/user', CreateUserController.CreateUser);
 // adicionando a validacao
 app.get('/user', Validate, CreateUserController.ListUsersInfos);
+app.get('/user/:id', Validate, CreateUserController.ListUsersInfosById);
 
 app.use(Errors);
 // ...

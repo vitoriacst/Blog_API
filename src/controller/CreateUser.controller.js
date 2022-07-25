@@ -33,4 +33,13 @@ const ListUsersInfos = rescue(async (_req, res, next) => {
   }
   return res.status(200).json(response);
 });
-module.exports = { CreateUser, ListUsersInfos };
+
+const ListUsersInfosById = rescue(async (req, res, next) => {
+  const { id } = req.params;
+  const response = await UserService.ListUsersInfosById(id);
+  if (response.error) {
+    return next(response.error);
+  }
+  return res.status(200).json(response);
+});
+module.exports = { CreateUser, ListUsersInfos, ListUsersInfosById };
