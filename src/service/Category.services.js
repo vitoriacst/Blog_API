@@ -2,10 +2,10 @@ const { category } = require('../database/models/index');
 
 const CategoryName = async (name) => {
   try {
-    const result = await category.create(name, {
+    const response = await category.create(name, {
       raw: true,
     });
-    return result;
+    return response;
   } catch (error) {
     return {
       error: {
@@ -15,5 +15,15 @@ const CategoryName = async (name) => {
     };
   }
 };
+const CategoryNameGet = async (name) => {
+  try {
+    const response = await category.findAll(name, {
+      raw: true,
+    });
+    return response;
+  } catch (error) {
+    return undefined;
+  }
+};
 
-module.exports = { CategoryName };
+module.exports = { CategoryName, CategoryNameGet };
