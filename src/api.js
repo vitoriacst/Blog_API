@@ -1,5 +1,7 @@
 const express = require('express');
 const LoginController = require('./controller/Login.controller');
+const CreateUserController = require('./controller/CreateUser.controller');
+
 const Errors = require('./middlewares/Errors');
 require('express-async-errors');
 // ...
@@ -8,6 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.post('/login', LoginController.userInformations);
+app.post('/user', CreateUserController.CreateUser);
 app.use(Errors);
 // ...
 
