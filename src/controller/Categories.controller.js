@@ -14,4 +14,13 @@ const CategoryName = rescue(async (req, res, next) => {
   return res.status(201).json(response);
 });
 
-module.exports = { CategoryName };
+const CategoryNameGet = rescue(async (req, res, next) => {
+  const { name } = req.body;
+  const response = await categoryService.CategoryNameGet(name);
+  if (response.error) {
+    return next(response.error);
+  }
+  return res.status(200).json(response);
+});
+
+module.exports = { CategoryName, CategoryNameGet };
