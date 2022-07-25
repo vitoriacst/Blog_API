@@ -1,8 +1,8 @@
-const { category } = require('../database/models/index');
+const { Category } = require('../database/models/index');
 
 const CategoryName = async (name) => {
   try {
-    const response = await category.create(name, {
+    const response = await Category.create(name, {
       raw: true,
     });
     return response;
@@ -17,7 +17,7 @@ const CategoryName = async (name) => {
 };
 const CategoryNameGet = async (name) => {
   try {
-    const response = await category.findAll(name, {
+    const response = await Category.findAll(name, {
       raw: true,
     });
     return response;

@@ -16,6 +16,8 @@ app.post('/user', CreateUserController.CreateUser);
 app.get('/user', Validate, CreateUserController.ListUsersInfos);
 app.get('/user/:id', Validate, CreateUserController.ListUsersInfosById);
 app.post('/categories', Validate, categoriesController.CategoryName);
+app.get('/categories', Validate, categoriesController.CategoryNameGet);
+
 app.use(Errors);
 // ...
 
