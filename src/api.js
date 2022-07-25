@@ -1,6 +1,7 @@
 const express = require('express');
 const LoginController = require('./controller/Login.controller');
 const CreateUserController = require('./controller/CreateUser.controller');
+const categoriesController = require('./controller/Categories.controller');
 const Validate = require('./middlewares/jwtValidateToken');
 const Errors = require('./middlewares/Errors');
 require('express-async-errors');
@@ -14,7 +15,7 @@ app.post('/user', CreateUserController.CreateUser);
 // adicionando a validacao
 app.get('/user', Validate, CreateUserController.ListUsersInfos);
 app.get('/user/:id', Validate, CreateUserController.ListUsersInfosById);
-
+app.post('/categories', Validate, categoriesController.postCategoryName);
 app.use(Errors);
 // ...
 
