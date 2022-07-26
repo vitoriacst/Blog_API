@@ -27,7 +27,7 @@ services:
     platform: linux/x86_64
     restart: always
     ports:
-      - 3307:3307
+      - 3308:3308
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
