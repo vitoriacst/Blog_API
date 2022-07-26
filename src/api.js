@@ -2,6 +2,8 @@ const express = require('express');
 const LoginController = require('./controller/Login.controller');
 const CreateUserController = require('./controller/CreateUser.controller');
 const categoriesController = require('./controller/Categories.controller');
+const BlogPostController = require('./controller/BlogPost.controller');
+
 const Validate = require('./middlewares/jwtValidateToken');
 const Errors = require('./middlewares/Errors');
 require('express-async-errors');
@@ -17,6 +19,7 @@ app.get('/user', Validate, CreateUserController.ListUsersInfos);
 app.get('/user/:id', Validate, CreateUserController.ListUsersInfosById);
 app.post('/categories', Validate, categoriesController.CategoryName);
 app.get('/categories', Validate, categoriesController.CategoryNameGet);
+app.get('/post', Validate, BlogPostController.BlogPost);
 
 app.use(Errors);
 // ...
